@@ -9,3 +9,11 @@ ImageSummaryApp connections:
 - EuclideanColorDistance -> ColorDistanceFinder
 - DistanceImageBinarizer -> ImageBinarizer
 - BinarizingImageGroupFinder -> ImageGroupFinder
+
+ImageSummaryApp - Has 3 parameters; image path, target color in hex, threshold for binarization.
+
+Implement order;
+
+DfsBinaryGroupFinder -> EuclideanColorDistance -> DistanceImageBinarizer -> BinarizingImageGroupFinder
+
+1. BinaryGroupFinder
