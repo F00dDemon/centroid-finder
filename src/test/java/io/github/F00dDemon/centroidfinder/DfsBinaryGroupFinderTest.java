@@ -1,3 +1,5 @@
+package io.github.F00dDemon.centroidfinder;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

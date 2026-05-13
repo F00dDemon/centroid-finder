@@ -1,3 +1,5 @@
+package io.github.F00dDemon.centroidfinder;
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import org.junit.jupiter.api.Test;
