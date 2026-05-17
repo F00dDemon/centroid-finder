@@ -133,7 +133,7 @@ public class VideoTest {
             BufferedImage frame = extractRgbFrame(videoPath, 30);
 
             // Save frame to disk
-            saveImage(frame, "sample.png");
+            saveImage(frame, "output.png");
 
             System.out.println("Frame extracted successfully.");
 
