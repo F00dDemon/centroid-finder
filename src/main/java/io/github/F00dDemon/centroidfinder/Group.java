@@ -39,6 +39,7 @@ public record Group(int size, Coordinate centroid) implements Comparable<Group> 
         }
         return Integer.compare(this.centroid().y(), other.centroid().y());
     }
+    
 
     /**
      * Returns a string representing this group in comma-separated values (CSV) format.

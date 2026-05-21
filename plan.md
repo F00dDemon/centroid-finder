@@ -16,11 +16,12 @@ Create video process main class:
         Class 3
         - Take an a buffered image.
         - Processing every framerate/sec frame, 
-        - Output bufferedimage
+        - Output group
 
-    Add to array, If video is not done, go back}
+    Add to groups array, If video is not done, go back}
 
         Class 4
+        - Accepts array of groups
         - Reads the array, writes to a csv
 
 
