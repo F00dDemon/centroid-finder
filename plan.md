@@ -1,18 +1,18 @@
 Create video process main class:
 
-        Class 1
+        Class 1 - ExtractVideoData
         - Takes the path of the video
         - Validates it is a video
         - Extract metadata
 
     {Loop:
 
-        Class 2
+        Class 2 - ExtractFrame
         - Take video meta data & path
         - Take the needed frame by 
         - Outputs a bufferedimage
 
-        Class 3
+        Class 3 - ProcessFrame
         - Take an a buffered image.
         - Processing every framerate/sec frame, 
         - Output group
