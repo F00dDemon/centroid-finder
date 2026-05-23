@@ -61,7 +61,7 @@ public class DistanceImageBinarizer implements ImageBinarizer {
             for(int xCheck = xCoord; xCheck < imageWidth; xCheck++){
                 int getRGBColor = image.getRGB(xCheck, yCheck);
                 Color colorConvert = new Color(getRGBColor, false);
-                if(distanceFinder.distance(colorConvert.getRGB(), targetColor) >= threshold){
+                if(distanceFinder.distance(colorConvert.getRGB(), targetColor) < threshold){
                     returnArray[yCheck][xCheck] = 1;
                 }else{
                     returnArray[yCheck][xCheck] = 0;
@@ -86,9 +86,9 @@ public class DistanceImageBinarizer implements ImageBinarizer {
         for(int row = 0; row < image.length ; row++){
             for(int column = 0; column < image[0].length; column++){
                 if(image[row][column] == 1){
-                    returnImage.setRGB(column, row, black.getRGB());
-                }else{
                     returnImage.setRGB(column, row, white.getRGB());
+                }else{
+                    returnImage.setRGB(column, row, black.getRGB());
                 }
             }
         }

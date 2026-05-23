@@ -28,4 +28,7 @@ Create video process main class:
         - Accepts array of groups
         - Reads the array, writes to a csv
 
+targetColor: 53020A
+threshold: 50
+
 StreamsAPI
