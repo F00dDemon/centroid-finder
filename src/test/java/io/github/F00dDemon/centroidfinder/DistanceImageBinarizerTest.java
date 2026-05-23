@@ -71,22 +71,22 @@ public class DistanceImageBinarizerTest {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
         // Set pixel (0,0) to pure white — far from black (targetColor=0), distance > 0
-        // With threshold=0, distance >= 0 is always true, so this pixel should be 1
+        // With threshold=0, distance >= 0 is always true, so this pixel should be 0
         image.setRGB(0, 0, new Color(255, 255, 255).getRGB());
 
         // Set pixel (1,1) to pure black — matches targetColor exactly, distance = 0
-        // With threshold=0, distance >= 0 is still true, so this should also be 1
+        // With threshold=0, distance >= 0 is still true, so this should also be 0
         image.setRGB(1, 1, new Color(0, 0, 0).getRGB());
 
         int[][] matrix = binarizer.toBinaryArray(image);
 
-        // White pixel at (col=0, row=0) → matrix[0][0] should be 1
-        assertTrue(matrix[0][0] == 1,
-            "White pixel far from target color should return 1 when threshold is 0");
+        // White pixel at (col=0, row=0) → matrix[0][0] should be 0
+        assertTrue(matrix[0][0] == 0,
+            "White pixel far from target color should return 0 when threshold is 0");
 
-        // Black pixel at (col=1, row=1) → matrix[1][1] should be 1
-        assertTrue(matrix[1][1] == 1,
-            "Black pixel at distance 0 from target should still return 1 when threshold is 0");
+        // Black pixel at (col=1, row=1) → matrix[1][1] should be 0
+        assertTrue(matrix[1][1] == 0,
+            "Black pixel at distance 0 from target should still return 0 when threshold is 0");
     }
     @Test
     void testToBufferedImage(){
@@ -98,10 +98,10 @@ public class DistanceImageBinarizerTest {
 
         BufferedImage result = binarizer.toBufferedImage(image);
 
-        assertEquals(result.getRGB(0, 0), -16777216);
-        assertEquals(result.getRGB(1, 0), -1);
-        assertEquals(result.getRGB(0, 1), -1);
-        assertEquals(result.getRGB(1, 1), -16777216);
+        assertEquals(result.getRGB(0, 0), -1);
+        assertEquals(result.getRGB(1, 0), -16777216);
+        assertEquals(result.getRGB(0, 1), -16777216);
+        assertEquals(result.getRGB(1, 1), -1);
 
     }
 }
