@@ -136,7 +136,7 @@ class ProcessFrameTest {
 
     @Test
     void shouldProcessExtractedVideoFrame() throws Exception {
-        BufferedImage frame = ExtractFrame.extractRGBFrame("sample.mp4", 5);
+        BufferedImage frame = ExtractFrame.extractRGBFrame("res/testInput/sample.mp4", 5);
 
         assertNotNull(frame);
 

@@ -13,7 +13,7 @@ class ExtractFrameTest {
 
     @BeforeAll
     static void setup() {
-        File file = new File("sample.mp4");
+        File file = new File("res/testInput/sample.mp4");
         TEST_VIDEO = file.getAbsolutePath();
 
         assertTrue(file.exists(), "Test video file should exist");
