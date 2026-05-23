@@ -22,4 +22,7 @@ Create video process main class:
         Class 4
         - Reads the array, writes to a csv
 
+targetColor: 53020A
+threshold: 50
+
 StreamsAPI
