@@ -3,6 +3,7 @@ package io.github.F00dDemon.centroidfinder;
 //should be useful when we deal with appending the values into the array for the video CSV file
 
 import java.awt.image.BufferedImage;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -43,7 +44,7 @@ public class VideoSummaryApp {
         int currentFrame = 0;
         ExtractFrame frameView = new ExtractFrame();
         ProcessFrame processFrame = new ProcessFrame();
-        Queue<Group> frames = new LinkedList();
+        Queue<Group> frames = new LinkedList<>();
 
         while(currentFrame < frameCount){
             try {
@@ -53,6 +54,17 @@ public class VideoSummaryApp {
                 System.err.println(e);
             };
             currentFrame += frameCount;
+        }
+
+        try (PrintWriter writer = new PrintWriter("groups.csv")) {
+            for(int i = 0; i < frames.size(); i++){
+                Group line = frames.poll();
+                writer.println(i+", "+line.toCsvRow());
+            }
+            System.out.println("Groups summary saved as groups.csv");
+        } catch (Exception e) {
+            System.err.println("Error writing groups.csv");
+            e.printStackTrace();
         }
 
     }
