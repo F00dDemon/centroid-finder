@@ -53,7 +53,7 @@ public class VideoSummaryApp {
             } catch (Exception e) {
                 System.err.println(e);
             };
-            currentFrame += frameCount;
+            currentFrame += frameRate;
         }
 
         try (PrintWriter writer = new PrintWriter("groups.csv")) {
