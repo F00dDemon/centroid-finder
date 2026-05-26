@@ -42,13 +42,12 @@ public class VideoSummaryApp {
         frameCount = metaData.getFrameCount();
 
         int currentFrame = 0;
-        ExtractFrame frameView = new ExtractFrame();
         ProcessFrame processFrame = new ProcessFrame();
         Queue<Group> frames = new LinkedList<>();
 
         while(currentFrame < frameCount){
             try {
-                BufferedImage frame = frameView.extractRGBFrame(inputVideoPath, currentFrame);
+                BufferedImage frame = ExtractFrame.extractRGBFrame(inputVideoPath, currentFrame);
                 Group frameToAdd = processFrame.ProcessSingleFrame(frame, Integer.parseInt(hexTargetColor, 16), threshold);
                 frames.add(frameToAdd);
             } catch (Exception e) {
