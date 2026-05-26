@@ -27,3 +27,4 @@ target/
 .vscode/
 .github/
 node_modules
+.env
