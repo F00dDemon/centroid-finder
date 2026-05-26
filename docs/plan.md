@@ -26,4 +26,6 @@ Create video process main class:
 targetColor: 53020A
 threshold: 50
 
+mvn exec:java -Dexec.args="res/testInput/sample.mp4 FFA200 164"
+
 StreamsAPI
