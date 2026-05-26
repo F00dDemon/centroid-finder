@@ -2,14 +2,15 @@ package io.github.F00dDemon.centroidfinder;
 //we can then do int xValue = centroid.x() and int yValue = centroid.y() to pull the individual values
 //should be useful when we deal with appending the values into the array for the video CSV file
 
+import java.awt.image.BufferedImage;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class VideoSummaryApp {
-    public int width;
-    public int height;
-    public double frameRate;
-    public long frameCount;
-    public long durationMicros;
-    public String videoCodec;
-    public String format;
+    public static int width;
+    public static int height;
+    public static double frameRate;
+    public static long frameCount;
 
     public static void main(String[] args) {
         if (args.length < 3) {
@@ -34,6 +35,25 @@ public class VideoSummaryApp {
             System.err.println(e);
             return;
         };
+        width = metaData.getWidth();
+        height = metaData.getHeight();
+        frameRate = metaData.getFrameRate();
+        frameCount = metaData.getFrameCount();
+
+        int currentFrame = 0;
+        ExtractFrame frameView = new ExtractFrame();
+        ProcessFrame processFrame = new ProcessFrame();
+        Queue<Group> frames = new LinkedList();
+
+        while(currentFrame < frameCount){
+            try {
+                BufferedImage frame = frameView.extractRGBFrame(inputVideoPath, currentFrame);
+                frames.add(processFrame.ProcessSingleFrame(frame, Integer.parseInt(hexTargetColor, 16), threshold));
+            } catch (Exception e) {
+                System.err.println(e);
+            };
+            currentFrame += frameCount;
+        }
 
     }
 }

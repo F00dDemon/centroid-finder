@@ -29,7 +29,24 @@ public class ExtractVideoData {
             } finally {
                 grabber.stop();
                 grabber.release();
+                }
             }
         }
-    }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public long getFrameCount() {
+            return frameCount;
+        }
+
+        public double getFrameRate() {
+            return frameRate;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+        
 }

@@ -18,11 +18,6 @@ Create video process main class:
         - Output group
 
         Add to groups array, If video is not done, go back}
-        - Take in a buffered image.
-        - Processes single framerate/sec frame,
-        - Outputs centroid x and y coordinates 
-
-    Add to array, if video is not done, go back}
 
         Class 4
         - Accepts array of groups

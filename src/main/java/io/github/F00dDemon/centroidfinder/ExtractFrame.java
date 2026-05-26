@@ -1,14 +1,14 @@
 package io.github.F00dDemon.centroidfinder;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.Java2DFrameConverter;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
 public class ExtractFrame {
-    public static BufferedImage extractRGBFrame(String videoPath, int frameNumber) throws Exception {
+    public BufferedImage extractRGBFrame(String videoPath, int frameNumber) throws Exception {
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath)) {
             try (Java2DFrameConverter converter = new Java2DFrameConverter()) {
                 try {
