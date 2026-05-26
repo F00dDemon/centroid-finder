@@ -49,17 +49,19 @@ public class VideoSummaryApp {
         while(currentFrame < frameCount){
             try {
                 BufferedImage frame = frameView.extractRGBFrame(inputVideoPath, currentFrame);
-                frames.add(processFrame.ProcessSingleFrame(frame, Integer.parseInt(hexTargetColor, 16), threshold));
+                Group frameToAdd = processFrame.ProcessSingleFrame(frame, Integer.parseInt(hexTargetColor, 16), threshold);
+                frames.add(frameToAdd);
             } catch (Exception e) {
                 System.err.println(e);
             };
-            currentFrame += frameRate;
+            currentFrame += (int)frameRate;
         }
 
         try (PrintWriter writer = new PrintWriter("groups.csv")) {
-            for(int i = 0; i < frames.size(); i++){
+            int size = frames.size();
+            for(int i = 0; i < size ; i++){
                 Group line = frames.poll();
-                writer.println(i+", "+line.toCsvRow());
+                writer.println(frameCount+", "+i+", "+line.toCsvRow());
             }
             System.out.println("Groups summary saved as groups.csv");
         } catch (Exception e) {

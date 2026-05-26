@@ -6,7 +6,7 @@ public class ExtractVideoData {
         public int width;
         public int height;
         public double frameRate;
-        public long frameCount;
+        public int frameCount;
 
         @Override
         public String toString() {
