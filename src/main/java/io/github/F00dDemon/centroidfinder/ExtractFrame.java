@@ -8,7 +8,7 @@ import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.Java2DFrameConverter;
 
 public class ExtractFrame {
-    public BufferedImage extractRGBFrame(String videoPath, int frameNumber) throws Exception {
+    public static BufferedImage extractRGBFrame(String videoPath, int frameNumber) throws Exception {
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath)) {
             try (Java2DFrameConverter converter = new Java2DFrameConverter()) {
                 try {
