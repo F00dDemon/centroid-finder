@@ -1,33 +1,46 @@
-import fs from "fs";
-import path from "path";
-import { spawn } from "child_process";
-import { v4 as uuidv4 } from "uuid";
+import fs from 'fs';
+import path from 'path';
+import { spawn } from 'child_process';
+import { v4 as uuidv4 } from 'uuid';
+import { jobStore } from '../store/jobStore.js';
 
-export const startVideoJob = async ({filename, targetColor, threshold}) => {
-    const safeFilename = path.basename(filename);
-    const videosDir = path.resolve(process.env.VIDEOS_DIR);
-    const inputVideo = path.join(videosDir, safeFilename);
+export const startVideoJob = async ({ filename, targetColor, threshold }) => {
+  const safeFilename = path.basename(filename);
+  const videosDir = path.resolve(process.env.VIDEOS_DIR);
+  const inputVideo = path.join(videosDir, safeFilename);
 
-    await fs.promises.access(inputVideo);
+  await fs.promises.access(inputVideo);
 
-    const jobId = uuidv4();
-    const jarPath = path.resolve(process.env.PROCESSOR_JAR);
+  const jobId = uuidv4();
+  const jarPath = path.resolve(process.env.PROCESSOR_JAR);
 
-    const child = spawn(
-        "java",
-        [
-            "-jar",
-            jarPath,
-            inputVideo,
-            targetColor,
-            threshold,
-        ],
-        {
-            detached: true,
-            stdio: "ignore"
-        }
+  jobStore.set(jobId, { status: 'processing' });
+
+  const child = spawn('java', ['-jar', jarPath, inputVideo, targetColor, threshold]);
+
+  child.on('close', (code) => {
+    if (code !== 0) {
+      jobStore.set(jobId, {
+        status: 'error',
+        error: `Error processing video: process exited with code ${code}`,
+      });
+      return;
+    }
+
+    const resultPath = path.join(
+    path.resolve(process.env.OUTPUT_DIR),
+    `${safeFilename}.csv`
     );
 
-    child.unref();
-    return jobId;
+    jobStore.set(jobId, { status: 'done', result: resultPath });
+  });
+
+  child.on('error', (err) => {
+    jobStore.set(jobId, {
+      status: 'error',
+      error: `Error processing video: ${err.message}`,
+    });
+  });
+
+  return jobId;
 };

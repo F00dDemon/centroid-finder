@@ -4,6 +4,7 @@ import path from 'path';
 import videoRoutes from './routers/video.routes.js';
 import processRoutes from './routers/process.routes.js';
 import thumbnailRoutes from './routers/thumbnail.routes.js'
+import statusRoutes from './routers/status.routes.js';
 
 //configure Express.js app
 const app = express();
@@ -27,6 +28,7 @@ app.use("/videos", express.static(videoFolder));
 app.use("/api/videos", videoRoutes);
 app.use("/process", processRoutes);
 app.use("/thumbnail", thumbnailRoutes);
+app.use('/process', statusRoutes);
 
 
 export default app;
