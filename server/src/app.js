@@ -1,8 +1,11 @@
 import express from 'express';
-import defaultRouter from './routers/default.routes.js';
+import dotenv from 'dotenv';
+import path from 'path';
+import videoRoutes from './routers/video.routes.js';
 
 //configure Express.js app
 const app = express();
+dotenv.config();
 
 //view engine
 app.set("view engine", "ejs");
@@ -15,7 +18,10 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const videoFolder = path.resolve(process.env.VIDEOS_DIR);
+
 //routers
-app.use("/", defaultRouter);
+app.use("/videos", express.static(videoFolder));
+app.use("/api/videos", videoRoutes);
 
 export default app;
