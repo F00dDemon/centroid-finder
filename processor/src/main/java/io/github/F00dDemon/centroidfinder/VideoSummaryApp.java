@@ -1,6 +1,4 @@
 package io.github.F00dDemon.centroidfinder;
-//we can then do int xValue = centroid.x() and int yValue = centroid.y() to pull the individual values
-//should be useful when we deal with appending the values into the array for the video CSV file
 
 import java.awt.image.BufferedImage;
 import java.io.PrintWriter;
