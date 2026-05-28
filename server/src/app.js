@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import videoRoutes from './routers/video.routes.js';
 import processRoutes from './routers/process.routes.js';
+import thumbnailRoutes from './routers/thumbnail.routes.js'
 
 //configure Express.js app
 const app = express();
@@ -25,5 +26,7 @@ const videoFolder = path.resolve(process.env.VIDEOS_DIR);
 app.use("/videos", express.static(videoFolder));
 app.use("/api/videos", videoRoutes);
 app.use("/process", processRoutes);
+app.use("/thumbnail", thumbnailRoutes);
+
 
 export default app;
