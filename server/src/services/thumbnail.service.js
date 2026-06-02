@@ -1,3 +1,5 @@
+/* eslint-disable no-empty-function */
+/* eslint-disable consistent-return */
 import { spawn } from 'child_process';
 import { buffer } from 'node:stream/consumers';
 import ffmpegPath from 'ffmpeg-static';

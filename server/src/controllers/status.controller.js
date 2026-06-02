@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { getJobStatus } from '../services/status.service.js';
 
 export const getStatus = async (req, res) => {
