@@ -6,11 +6,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class VideoSummaryApp {
-    public static int width;
-    public static int height;
-    public static double frameRate;
-    public static long frameCount;
-
     public static void main(String[] args) {
         if (args.length < 3) {
             System.out.println("Usage: java VideoSummaryApp <input_video> <hex_target_color> <threshold>");
@@ -34,10 +29,9 @@ public class VideoSummaryApp {
             System.err.println(e);
             return;
         };
-        width = metaData.getWidth();
-        height = metaData.getHeight();
-        frameRate = metaData.getFrameRate();
-        frameCount = metaData.getFrameCount();
+
+        double frameRate = metaData.getFrameRate();
+        long frameCount = metaData.getFrameCount();
 
         int currentFrame = 0;
         ProcessFrame processFrame = new ProcessFrame();
