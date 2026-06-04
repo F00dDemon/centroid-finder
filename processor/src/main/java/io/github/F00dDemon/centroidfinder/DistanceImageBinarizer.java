@@ -51,6 +51,8 @@ public class DistanceImageBinarizer implements ImageBinarizer {
      */
     @Override
     public int[][] toBinaryArray(BufferedImage image) {
+        if(image == null) throw new IllegalArgumentException("Image cannot be null");
+
         int imageHeight = image.getHeight();
         int imageWidth = image.getWidth();
         int xCoord = image.getMinTileX();
@@ -82,6 +84,8 @@ public class DistanceImageBinarizer implements ImageBinarizer {
      */
     @Override
     public BufferedImage toBufferedImage(int[][] image) {
+        if(image == null) throw new IllegalArgumentException("Image cannot be null");
+
         BufferedImage returnImage = new BufferedImage(image[0].length, image.length, BufferedImage.TYPE_INT_RGB);
         for(int row = 0; row < image.length ; row++){
             for(int column = 0; column < image[0].length; column++){
