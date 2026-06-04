@@ -37,6 +37,8 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     @Override
     public List<Group> findConnectedGroups(int[][] image) {
         if(image == null) throw new NullPointerException();
+        if(image.length == 0) throw new IllegalArgumentException();
+        if(image[0] == null) throw new NullPointerException();
         for(int[] row : image) {
             if(row == null) throw new NullPointerException();
             if(row.length != image[0].length) throw new IllegalArgumentException();
