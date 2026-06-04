@@ -5,7 +5,7 @@
 
 ## adding tests (required)
 
-- Add tests for ExtractVideoData (maybe VideoSummaryApp?)
+- Add tests for ExtractVideoData
 - Add tests for server folder (controllers, routers, services)
 
 ## improving error handling (required)
