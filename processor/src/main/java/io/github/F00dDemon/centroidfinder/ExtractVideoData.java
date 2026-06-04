@@ -1,6 +1,7 @@
 package io.github.F00dDemon.centroidfinder;
 
 import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.FrameGrabber;
 
 public class ExtractVideoData {
         public int width;
@@ -16,7 +17,7 @@ public class ExtractVideoData {
                     ", frameRate=" + frameRate +
                     ", frameCount=" + frameCount;
         }
-        public void extractMetadata(String videoPath) throws Exception {
+        public void extractMetadata(String videoPath) throws FrameGrabber.Exception {
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath)) {
             try {
                 grabber.start();
