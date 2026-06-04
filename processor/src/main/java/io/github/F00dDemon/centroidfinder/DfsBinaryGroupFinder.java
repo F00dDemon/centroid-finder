@@ -2,9 +2,8 @@ package io.github.F00dDemon.centroidfinder;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
+import java.util.Stack;
 
 public class DfsBinaryGroupFinder implements BinaryGroupFinder {
    /**
@@ -65,15 +64,15 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     }
 
     private static Group dfs(int[][] image, boolean[][] visited, int x, int y) { 
-        Queue<int[]> imageQueue = new LinkedList<>();
-        imageQueue.add(new int[]{x, y});
+        Stack<int[]> imageStack = new Stack<>();
+        imageStack.push(new int[]{x, y});
 
         int xTotal = 0; // used for calculating centroid x position 
         int yTotal = 0; // used for calulating centroid y position
         int size = 0; // used as amount to determine centroid
         
-        while(!imageQueue.isEmpty()){
-            int[] current = imageQueue.poll();
+        while(!imageStack.isEmpty()){
+            int[] current = imageStack.pop();
             int curX = current[0];
             int curY = current[1];
 
@@ -85,7 +84,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             size++;
 
             for(int[] move: possibleMoves(image, curX, curY)) {
-                if(!visited[move[1]][move[0]]) imageQueue.add(move);
+                if(!visited[move[1]][move[0]]) imageStack.push(move);
             }
         }
 
