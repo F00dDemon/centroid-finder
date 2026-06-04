@@ -3,10 +3,10 @@ package io.github.F00dDemon.centroidfinder;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 
 public class ExtractVideoData {
-        public int width;
-        public int height;
-        public double frameRate;
-        public int frameCount;
+        private int width;
+        private int height;
+        private double frameRate;
+        private long frameCount;
 
         @Override
         public String toString() {
@@ -14,7 +14,7 @@ public class ExtractVideoData {
                     "width=" + width +
                     ", height=" + height +
                     ", frameRate=" + frameRate +
-                    ", frameCount=" + frameCount;
+                    ", frameCount=" + frameCount + "}";
         }
         public void extractMetadata(String videoPath) throws Exception {
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath)) {
@@ -48,5 +48,4 @@ public class ExtractVideoData {
         public int getHeight() {
             return height;
         }
-        
-}
+    }
