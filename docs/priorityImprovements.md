@@ -15,7 +15,7 @@
 
 ## writing documentation (required)
 
-- Add documentation for ExtractVideoData and VideoSummaryApp
+- Add documentation for video processing classes (ExtractVideoData, ExtractFrame, ProcessFrame, VideoSummaryApp)
 - Add documentation for server folder (controllers, routers, services)
 
 ## improving performance (optional)
