@@ -1,13 +1,15 @@
+/* eslint-disable no-empty-function */
+/* eslint-disable consistent-return */
 import { spawn } from 'child_process';
 import { buffer } from 'node:stream/consumers';
-
+import ffmpegPath from 'ffmpeg-static';
 
 
 export const extractFirstFrame = async (videoPath) => {
 if (!process.env.VIDEOS_DIR) {
   throw new Error('VIDEOS_DIR is not defined in environment variables');
 }
-  const ffmpeg = spawn('ffmpeg', [
+  const ffmpeg = spawn(ffmpegPath, [
     '-i', videoPath,
     '-vframes', '1',
     '-f', 'image2pipe',

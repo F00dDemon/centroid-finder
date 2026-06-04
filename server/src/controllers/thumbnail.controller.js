@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import path from 'path';
 import fs from 'fs';
 import { extractFirstFrame } from '../services/thumbnail.service.js';
