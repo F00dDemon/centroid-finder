@@ -12,16 +12,17 @@ public class VideoSummaryApp {
     public static long frameCount;
 
     public static void main(String[] args) {
-        if (args.length < 3) {
-            System.out.println("Usage: java VideoSummaryApp <input_video> <hex_target_color> <threshold>");
+        if (args.length < 4) {
+            System.out.println("Usage: java VideoSummaryApp <input_video> <output_csv> hex_target_color> <threshold>");
             return;
         }
 
         String inputVideoPath = args[0];
-        String hexTargetColor = args[1];
+        String outputCsv = args[1];
+        String hexTargetColor = args[2];
         int threshold = 0;
         try {
-            threshold = Integer.parseInt(args[2]);
+            threshold = Integer.parseInt(args[3]);
         } catch (NumberFormatException e) {
             System.err.println("Threshold must be an integer.");
             return;
@@ -54,15 +55,15 @@ public class VideoSummaryApp {
             currentFrame += (int)frameRate;
         }
 
-        try (PrintWriter writer = new PrintWriter("groups.csv")) {
+        try (PrintWriter writer = new PrintWriter(outputCsv)) {
             int size = frames.size();
             for(int i = 0; i < size ; i++){
                 Group line = frames.poll();
-                writer.println(frameCount+", "+i+", "+line.toCsvRow());
+                writer.println(i+","+line.centroid().x()+","+line.centroid().y());
             }
-            System.out.println("Groups summary saved as groups.csv");
+            System.out.println("CSV summary saved in: " + outputCsv);
         } catch (Exception e) {
-            System.err.println("Error writing groups.csv");
+            System.err.println("Error writing to " + outputCsv);
             e.printStackTrace();
         }
 

@@ -8,6 +8,7 @@ export const startVideoJob = async ({ filename, targetColor, threshold }) => {
   const safeFilename = path.basename(filename);
   const videosDir = path.resolve(process.env.VIDEOS_DIR);
   const inputVideo = path.join(videosDir, safeFilename);
+  const outputCsv = path.join(path.resolve(process.env.OUTPUT_DIR), `${safeFilename}.csv`);
 
   await fs.promises.access(inputVideo);
 
@@ -16,7 +17,7 @@ export const startVideoJob = async ({ filename, targetColor, threshold }) => {
 
   jobStore.set(jobId, { status: 'processing' });
 
-  const child = spawn('java', ['-jar', jarPath, inputVideo, targetColor, threshold]);
+  const child = spawn('java', ['-jar', jarPath, inputVideo, outputCsv, targetColor, threshold.toString()]);
 
   child.on('close', (code) => {
     if (code !== 0) {
