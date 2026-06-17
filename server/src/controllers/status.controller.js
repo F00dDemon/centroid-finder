@@ -6,6 +6,7 @@ export const getStatus = async (req, res) => {
 
   try {
     const job = await getJobStatus(jobId);
+      
 
     if (!job) {
       return res.status(404).json({ error: 'Job ID not found' });

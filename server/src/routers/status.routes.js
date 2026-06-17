@@ -1,8 +1,8 @@
 import express from 'express';
 import * as statusController from '../controllers/status.controller.js';
 
-const router = express.Router();
+const router = express.Router();    
 
-router.get('/:jobId/status', statusController.getStatus);
+router.get('/status/:jobId', statusController.getStatus);
 
 export default router;

@@ -1,5 +1,3 @@
-
-
 Easy:
 - ENTIRE binarized video output
 
@@ -14,7 +12,3 @@ Stretch:
 
 Impossible:
 - salamander delivery service
-
-
-
-
