@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { Writable } from 'stream';
 import { spawn } from 'child_process';
 import { v4 as uuidv4 } from 'uuid';
 import { jobStore } from '../store/jobStore.js';
@@ -42,6 +43,20 @@ export const startVideoJob = async ({ filename, targetColor, threshold }) => {
       error: `Error processing video: ${err.message}`,
     });
   });
+
+  //child.stderr.on('data', () => {});
+
+  child.stderr.pipe(
+    new Writable({
+      write(_chunk, _encoding, callback) {
+        callback();
+      }
+    })
+  );
+
+  /*child.stderr.on('data', (data) => {
+    console.log(`[${jobId}] stderr: ${data}`);
+  });*/
 
   return jobId;
 };
