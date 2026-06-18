@@ -6,6 +6,7 @@ import processRoutes from './routers/process.routes.js';
 import thumbnailRoutes from './routers/thumbnail.routes.js'
 import statusRoutes from './routers/status.routes.js';
 import previewRoutes from './routers/preview.routes.js';
+import resultsRoutes from './routers/results.routes.js';
 import cors from 'cors';
 
 //configure Express.js app
@@ -37,6 +38,7 @@ app.use("/process", processRoutes);
 app.use("/thumbnail", thumbnailRoutes);
 app.use('/process', statusRoutes);
 app.use('/preview', previewRoutes);
+app.use('/results', resultsRoutes);
 
 
 export default app;
