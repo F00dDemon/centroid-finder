@@ -29,11 +29,11 @@ The server folder is used as the backend portion of salamander-project, which ca
 4. Run ```npm i``` to install the necessary node packages for the project.
 5. Create a .env file with the following variables:
 
-- VIDEOS_DIR - the directory where your videos are stored.
-- PROCESSOR_JAR - the filepath to where your centroidfinder jar file is located.
-- OUTPUT_DIR - the directory where the output csv files will be stored.
-- VITE_API_URL - URL where Vite will pull the videos from.
-- PORT - the port number where the backend runs from.
+- ```VIDEOS_DIR``` - the directory where your videos are stored.
+- ```PROCESSOR_JAR``` - the filepath to where your centroidfinder jar file is located.
+- ```OUTPUT_DIR``` - the directory where the output csv files will be stored.
+- ```VITE_API_URL``` - the URL where Vite will pull the videos from.
+- ```PORT``` - the port number where the backend runs from.
 
    Example:
     ```
