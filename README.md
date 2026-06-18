@@ -45,3 +45,8 @@ The server folder is used as the backend portion of salamander-project, which ca
     ```
 
 7. Run ```npm run dev``` to run the server. Make sure that your frontend is running as well!
+
+## Frontend Example
+
+<img width="1545" height="1226" alt="Frontend Preview page" src="https://github.com/user-attachments/assets/3e46a65d-fb09-4ae3-964b-4158b145fa96" />
+
