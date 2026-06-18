@@ -5,10 +5,17 @@ import videoRoutes from './routers/video.routes.js';
 import processRoutes from './routers/process.routes.js';
 import thumbnailRoutes from './routers/thumbnail.routes.js'
 import statusRoutes from './routers/status.routes.js';
+import previewRoutes from './routers/preview.routes.js';
+import cors from 'cors';
 
 //configure Express.js app
 const app = express();
 dotenv.config();
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  exposedHeaders: ['Content-Range', 'Accept-Ranges', 'Content-Length'],
+}));
 
 //view engine
 app.set("view engine", "ejs");
@@ -29,6 +36,7 @@ app.use("/api/videos", videoRoutes);
 app.use("/process", processRoutes);
 app.use("/thumbnail", thumbnailRoutes);
 app.use('/process', statusRoutes);
+app.use('/preview', previewRoutes);
 
 
 export default app;
