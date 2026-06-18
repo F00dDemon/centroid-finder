@@ -1,0 +1,17 @@
+io\github\F00dDemon\centroidfinder\ImageGroupFinder.class
+io\github\F00dDemon\centroidfinder\ProcessFrame.class
+io\github\F00dDemon\centroidfinder\VideoTest$VideoMetadata.class
+io\github\F00dDemon\centroidfinder\ImageSummaryApp.class
+io\github\F00dDemon\centroidfinder\VideoSummaryApp.class
+io\github\F00dDemon\centroidfinder\ImageBinarizer.class
+io\github\F00dDemon\centroidfinder\DfsBinaryGroupFinder.class
+io\github\F00dDemon\centroidfinder\Group.class
+io\github\F00dDemon\centroidfinder\BinaryGroupFinder.class
+io\github\F00dDemon\centroidfinder\ColorDistanceFinder.class
+io\github\F00dDemon\centroidfinder\Coordinate.class
+io\github\F00dDemon\centroidfinder\ExtractFrame.class
+io\github\F00dDemon\centroidfinder\BinarizingImageGroupFinder.class
+io\github\F00dDemon\centroidfinder\VideoTest.class
+io\github\F00dDemon\centroidfinder\DistanceImageBinarizer.class
+io\github\F00dDemon\centroidfinder\EuclideanColorDistance.class
+io\github\F00dDemon\centroidfinder\ExtractVideoData.class

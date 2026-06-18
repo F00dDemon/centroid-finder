@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.github.F00dDemon.centroidfinder.ExtractFrameTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.750 s -- in io.github.F00dDemon.centroidfinder.ExtractFrameTest
