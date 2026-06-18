@@ -29,9 +29,11 @@ export const startVideoJob = async ({ filename, targetColor, threshold }) => {
       return;
     }
 
+    const baseName = path.parse(safeFilename).name;
+
     const resultPath = path.join(
     path.resolve(process.env.OUTPUT_DIR),
-    `${safeFilename}.csv`
+    `${baseName}_${jobId}.csv`
     );
 
     jobStore.set(jobId, { status: 'done', result: resultPath });

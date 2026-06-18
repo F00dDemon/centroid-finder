@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import fs from 'fs';
 import path from 'path';
 import { getVideoPath } from '../services/preview.service.js';
