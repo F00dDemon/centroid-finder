@@ -17,6 +17,7 @@ public class ExtractVideoData {
                     ", frameCount=" + frameCount;
         }
         public void extractMetadata(String videoPath) throws Exception {
+        if (videoPath == null || videoPath.isBlank()) throw new IllegalArgumentException("Video path cannot be null or empty"); 
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath)) {
             try {
                 grabber.start();

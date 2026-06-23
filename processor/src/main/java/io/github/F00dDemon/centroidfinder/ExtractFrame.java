@@ -9,6 +9,8 @@ import org.bytedeco.javacv.Java2DFrameConverter;
 
 public class ExtractFrame {
     public static BufferedImage extractRGBFrame(String videoPath, int frameNumber) throws Exception {
+        if (videoPath == null || videoPath.isBlank()) throw new IllegalArgumentException("Video path cannot be null or empty");
+        if (frameNumber < 0) throw new IllegalArgumentException("Frame number cannot be negative");
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoPath)) {
             try (Java2DFrameConverter converter = new Java2DFrameConverter()) {
                 try {
